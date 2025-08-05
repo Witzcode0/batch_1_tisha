@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- <button id="pay_with_razorpay">Pay</button> -->
+
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium repellat earum quidem incidunt vero asperiores deleniti saepe ea molestias unde dolores nam dignissimos distinctio, odit maxime inventore assumenda autem. Officiis!</p>
+
+    <button id="hide">Hide</button>
+    <button id="show">Show</button>
+    <button id="toggle">Toggle</button>
+
+    <!-- <input type="text" id="fullname">
+    <input type="text" id="fullname"> -->
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+
+        // Mouse Event - click, dblclick, mouseenter, mouseleave
+        // Keyboard Event - keypress, keydown, keyup
+        // form Even - submit, change, focus, blur
+        // Document/window Event - load, resize, scroll, unload
+
+        // hide, show and toggle
+        $(document).ready(function(){
+            $("#hide").click(function(){
+                $("p").hide();
+            })
+            $("#show").click(function(){
+                $("p").show();
+            })
+            $("#toggle").click(function(){
+                $("p").toggle();
+            })
+
+            var x = 10;
+            var x = 20;
+            console.log(x);
+        })
+       
+
+        // on method
+
+        // $(document).ready(function(){
+        //     $("button").on("click", function(){
+        //         $(this).hide();
+        //     })
+        // })
+
+        // Form event
+
+        // $(document).ready(function(){
+            // $("#fullname").focus(function(){
+            //     $(this).css("border", "10px solid pink")
+            // })
+            // $("input").focus(function(){
+            //     $(this).css("background-color", "black");
+            // });
+
+            // $("input").blur(function(){
+            //     $(this).css("background-color", "red");
+            // })
+        // });
+
+        // Mouse event
+
+        // $(document).ready(function(){
+            // $("p").click(function(){
+            //     $(this).hide();
+            // })
+            // $("p").dblclick(function(){
+            //     $(this).hide();
+            // })
+            // $("p").mouseenter(function(){
+            //     $(this).hide();
+            // })
+            // $("p").mouseleave(function(){
+            //     $(this).hide();
+            // })
+            // $("p").mouseenter(function(){
+            //     $(this).css("color","red");
+            // })
+        // })
+       
+
+        // syntax: 
+        // $(selector).action()
+
+        // $ - define jQuery
+        // selector - element
+        // action - permorm action on the element
+
+        // The document ready Event
+
+        // syntax :
+
+        // $(document).ready(function(){
+
+        // });
+
+        // $(document).ready(function(){
+        //     $("#pay_with_razorpay").click(function(){
+        //         $(this).hide();
+        //     })
+        // })
+    </script>
+</body>
+</html>
