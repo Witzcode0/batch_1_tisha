@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- <button id="btnLoad">Load content</button>
+    <div id="result" style="height: 200px; width: 50%; border: 1px solid violet; padding: 15px;text-align: justify;"></div> -->
+
+    <form action="" id="myForm">
+        <input type="text" id="title" placeholder="title"><br>
+        <input type="text" id="body" placeholder="body"><br>
+        <button type="submit">Submit</button>
+    </form>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script>
+
+        $(document).ready(function(){
+            $("#myForm").submit(function(event){
+                event.preventDefault();
+
+                $.ajax({
+                    url:"https://jsonplaceholder.typicode.com/posts",
+                    method:"POST",
+                    data:{
+                        "title": $("#title").val(),
+                        "body":$("#body").val(),
+                        "userId":123456789
+                    },
+                    success: function(res){
+                        console.log("API Response:", res);
+                        alert("Form submited!!")
+                    },
+                    error: function(){
+                        alert("Something went wrong");
+                    }
+                })
+            })
+        })
+
+        // $(document).ready(function(){
+        //     $("#btnLoad").click(function(){
+        //         $("#result").load("index.html");
+        //     })
+        // })
+    </script>
+</body>
+</html>

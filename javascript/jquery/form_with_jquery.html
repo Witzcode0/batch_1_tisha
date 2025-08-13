@@ -7,39 +7,59 @@
 </head>
 <body>
 
-    <form action="">
+    <!-- <form action="">
         <input type="text" id="empID">
         <input type="text" id="fname" placeholder="Firstname">
         <input type="text" id="lname" placeholder="Lastname">
-        <!-- <input type="text" id="name" placeholder="Name">
-        <input type="email" id="email"> -->
+        <input type="text" id="name" placeholder="Name">
+        <input type="email" id="email"> 
         <button id="btn">Submit</button>
+    </form> -->
+
+    <form action="">
+        <input type="password" id="password" placeholder="*********">
+        <button id="toogleBtn">Show password</button>
     </form>
 
     <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
     <script>
         $(document).ready(function(){
-            
-            $("#btn").click(function(){
-                let fname = $('#fname').val();
-                let lname = $('#lname').val();
-                alert("Fullname " + fname[0].toUpperCase() + fname.slice(1, fname.length) + " " + lname);
+            $("#toogleBtn").click(function(e){
+                e.preventDefault();
+                // form validation
+                if($("#password").val() !== ""){
+                    let password = $("#password").val();
+                    console.log(password);
+                    $("#password").attr("type", "text");
+                    $('#password').val(password);
+                }else{
+                    alert("Password required!!!");
+                }
             })
+        })
+
+        // $(document).ready(function(){
+            
+            // $("#btn").click(function(){
+            //     let fname = $('#fname').val();
+            //     let lname = $('#lname').val();
+            //     alert("Fullname " + fname[0].toUpperCase() + fname.slice(1, fname.length) + " " + lname);
+            // })
 
             // Set value
             // $("#name").val("Brijesh");
-            $("#empID").val("BIT0001");
+            // $("#empID").val("BIT0001");
 
             // get value
-            let getValue = $("#name").val();
+            // let getValue = $("#name").val();
             // console.log(getValue);
 
             // set placeholder
             // $("#email").attr("placeholder", "email")
 
             // disable a field
-            $("#empID").attr("disabled", true);
-        });
+            // $("#empID").attr("disabled", true);
+        // });
     </script>
 </body>
 </html>
