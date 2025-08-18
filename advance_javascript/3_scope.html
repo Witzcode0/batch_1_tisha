@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // scop
+        // let globalVar = "I am a global";
+        // function test(){
+        //     var localVar = "I am a local";
+        //     console.log(localVar);
+        //     console.log(globalVar);
+
+        //     if(true){
+        //         let blockScop = "i am a block scop"
+        //         console.log(blockScop);
+        //     }
+
+        //     console.log(blockScop);
+        // }
+        // test();
+
+        // lexical scop
+
+        function outer(){
+            let name = "Js";
+            function inner(){
+                console.log(name);
+            }
+            inner()
+        }
+        outer();
+    </script>
+</body>
+</html>

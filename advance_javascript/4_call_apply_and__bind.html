@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function greet(greeting){
+            console.log(`${greeting}, ${this.name} My age is ${this.age}`)
+        }
+
+        const user = {
+            name:"Brijesh",
+            age:29
+        }
+        // greet.call(user, "HEllo");
+        // greet.apply(user, ["Hi"]);
+        const bound = greet.bind(user, "Hye")
+        // bound();
+    </script>
+</body>
+</html>

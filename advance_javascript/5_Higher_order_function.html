@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        // higher order function
+        // function greet(fn){
+        //     fn();
+        // }
+
+        // greet(() => console.log("Hello"));
+
+        // currying
+        // function multiply(a){
+        //     return function(b){
+        //         return function(c){
+        //             return a * b * c
+        //         }
+        //     }
+        // }
+
+        // console.log(multiply(2)(3)(4));
+
+        // memorization
+        function memorize(fn){
+            const cache = {};
+            return function(n){
+                if (cache[n]){
+                    return cache[n];
+                }
+                const res = fn(n);
+                cache[n] = res;
+                console.log(cache)
+                return res;
+            }
+        }
+        const factorial = memorize(function(n){
+            if(n<=1){
+                return 1;
+            }
+            return n * factorial(n-1);
+        })
+
+        console.log(factorial(5));
+
+    </script>
+</body>
+</html>
+
