@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="para">Fullname : <span id="fullname"></span></p>
+    <form action="" id="myform">
+        <input type="text" id="fname">
+        <input type="text" id="lname">
+        <button type="submit">submit</button>
+    </form>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script>
+        // callbacks
+
+        // function myInfo(text){
+        //     console.log("Message:", text);
+        // }
+
+        // function first(){
+        //     console.log("First call");
+        //     myInfo("Hello");
+        // }
+
+        // function second(){
+        //     console.log("Second call");
+        //     myInfo("GoodBye");
+        // }
+
+        // first()
+        // second()
+
+        $(document).ready(function(){
+            $("#myform").submit(function(e){
+                e.preventDefault()
+                let fname = $("#fname").val();
+                let lname = $("#lname").val();
+                // $("#fullname").text(fname + " " + lname)
+
+                function displayFullname(anotherFunction){
+                    document.getElementById("fullname").innerHTML = anotherFunction;
+                }
+
+                function joinNames(fn, ln){
+                    let fullname = fn + " " + ln;
+                    return fullname
+                }
+
+                let finalMerge = joinNames(fname, lname);
+                displayFullname(finalMerge);
+            })
+        })
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+    states:
+        1] pending
+        2] fulfiled
+        3] Rejected
+    -->
+
+    <script>
+        const myPromises = new Promise((resolve, reject) => {
+            let success = false;
+            if (success){
+                resolve("Done, i got the ice-cream.")
+            }else{
+                reject("Faild, I din't got the ice-cream.")
+            }
+        })
+
+        myPromises
+        .then(res=>console.log(res))
+        .catch(err=>console.log(err))
+        .finally(()=> console.log("Promise finished"))
+    </script>
+</body>
+</html>
