@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul id="box">
+
+    </ul>
+    <script>
+        async function fetchData(url) {
+            try{
+                const res = await fetch(url);
+                if(res.status == 304){
+                    throw new Error(`HTTP error ${res.status}`)
+                }
+
+                const data = res.json();
+                return data;
+            }catch(error){
+                console.error("Error featching: ", error);
+                throw error;
+
+            }
+            
+        }
+
+        const apiUrl = 'https://jsonplaceholder.typicode.com/posts';
+
+        fetchData(apiUrl)
+        .then(data => {
+            // console.log(typeof(data));
+            let ul = document.getElementById("box");
+            for (let item in data){
+                console.log(item["title"])
+                let li = document.createElement("li");   // create <li>
+                li.textContent = data[item]['title'];            // set text
+                ul.appendChild(li);
+            }
+        })
+        .catch(error =>{
+            console.log("Error", error);
+        })
+
+    </script>
+</body>
+</html>

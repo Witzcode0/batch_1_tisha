@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+       function getData(){
+        return new Promise(resolve => {
+            setTimeout(() => resolve("Data loaded"), 3000);
+        })
+       } 
+
+    //    console.log(getData())
+
+    async function fetchData(){
+        try{
+            const data = await getData();
+            console.log(data);
+        }catch(err){
+            console.error(err)
+        }
+    }
+
+    fetchData();
+    </script>
+</body>
+</html>
