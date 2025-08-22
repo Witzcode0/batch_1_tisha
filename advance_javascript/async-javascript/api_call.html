@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+</head>
+
+<body>
+    <select id="posts">
+        <option disabled selected> choose a title </option>
+    </select>
+    <p>
+        BODY :
+        <span id="body"></span>
+    </p>
+    <script>
+        async function fetchdata(url) {
+
+            try {
+                const res = await fetch(url);
+                const data = res.json();
+                return data;
+            }
+            catch (error) {
+                console.log("ERROR : ", error);
+                throw error;
+            }
+
+
+        }
+        const apiurl = "https://jsonplaceholder.typicode.com/posts";
+        let select = document.getElementById("posts");
+
+        fetchdata(apiurl)
+
+            .then(data => {
+                //   console.log(data);
+
+
+                for (key in data) {
+                    console.log(data[key]["id"], data[key]["title"])
+                    let option = document.createElement("option");
+                    option.setAttribute("id", data[key]["id"]);
+                    option.setAttribute("title", data[key]["title"]);
+                    option.setAttribute("body", data[key]["body"]);
+                    let title = `${ data[key]["id"] }: ${ data[key]["title"] }`;
+                    option.textContent = title;
+                    select.appendChild(option);
+                }
+            })
+            .catch(error => {
+                console.log(error);
+            })
+
+        // const selectedop = select.option[select.index];
+        // let info = selectedop.getAttribute("id");
+
+        // console.log(select);
+        
+        select.addEventListener("change", function () {
+        let selectedOption = select.options[select.selectedIndex];
+        // console.log("----------->", selectedOption);
+        let body = selectedOption.getAttribute("body");
+        console.log("----------->", body)
+        let setbodydata = document.getElementById("body");
+        setbodydata.innerHTML = body;
+      });
+    </script>
+</body>
+
+</html>
