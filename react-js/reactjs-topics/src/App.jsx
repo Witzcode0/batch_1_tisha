@@ -1,11 +1,23 @@
+
+
 import Button from "./Button.jsx"
+import Footer from "./components/footer/Footer.jsx"
+import Nav from "./components/header/Nav.jsx"
+import Musics from "./components/main/Musics.jsx"
 
 function App() {
 
   return (
     <>
+      <Nav/>
+
+      <Musics/>
+
+
       <Button value="Register"/>
       <Button value="Login"/>
+      <Button value="Get in touch"/>
+      <Footer/>
     </>
   )
 }
