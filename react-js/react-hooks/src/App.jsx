@@ -1,3 +1,4 @@
+import RegisterForm from "./FormHandling";
 import Layout from "./Ucontext/Layout";
 import userContext from "./Ucontext/UContext";
 import UEffect from "./UEffect"
@@ -38,7 +39,8 @@ function App() {
 
       {/* <InputFocus /> */}
       {/* <hr /> */}
-      <Ureducer />
+      {/* <Ureducer /> */}
+      <RegisterForm />
     </>
   )
 }
