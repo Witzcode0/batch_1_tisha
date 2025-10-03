@@ -1,0 +1,54 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+li{
+    list-style-type: none;
+}
+
+a{
+    text-decoration: none;
+}
+
+.container{
+    max-width: 1400px;
+    margin: 0 auto;
+
+}
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.logo > h3{
+    font-size: 2em;
+}
+.logo > h3::first-letter{
+    color: brown;
+    font-size: 3em;
+
+}
+
+.menus > ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav-link{
+    margin-left: 1.5em;
+    font-size: 2em
+}
+
+.services{
+    display: flex;
+    flex-direction: column;
+}
+
+.service-item{
+    padding: 10px 0;
+    font-size: 2em;
+    color: black;
+}

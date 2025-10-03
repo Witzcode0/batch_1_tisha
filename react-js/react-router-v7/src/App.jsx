@@ -1,18 +1,27 @@
 import { BrowserRouter, Link, Route, Routes } from "react-router-dom"
+import Navbar from "./Navbar"
+import Home from "./Home"
+import Services from "./Services"
+import Blog from "./Blog"
+import About from "./About"
+import Contact from "./Contact"
+import ServiceDetail from "./ServiceDetail"
 
 
 function App() {
 
   return (
     <>
-      <BrowserRouter>
-        <Link to="/">Home</Link>
-        <Link to="/about">About</Link>
-        <Routes>
-          <Route path="/" element={<h1>Home Page</h1>}></Route>
-          <Route path="/about" element={<h1>About Page</h1>}></Route>
-        </Routes>
-      </BrowserRouter>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/services" element={<Services />} >
+          <Route path="service/:id" element={<ServiceDetail />} />
+        </Route>
+        <Route path="/blog" element={<Blog />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
+      </Routes>
     </>
   )
 }
