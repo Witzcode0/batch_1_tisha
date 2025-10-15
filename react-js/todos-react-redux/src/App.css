@@ -1,0 +1,117 @@
+/* General Page Layout */
+.todo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f8e8d8, #f0d2b6);
+  font-family: "Poppins", sans-serif;
+  width: 100%;
+}
+
+/* Main Box */
+.todo-box {
+  background-color: #fff;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  width: 400px;
+  text-align: center;
+}
+
+/* Title */
+.todo-box h1 {
+  color: #e5902f;
+  margin-bottom: 25px;
+  font-size: 28px;
+}
+
+/* Input Section */
+.todo-input-section {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 25px;
+}
+
+.todo-input-section input {
+  flex: 1;
+  padding: 10px 15px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.todo-input-section input:focus {
+  border-color: #e5902f;
+}
+
+.todo-input-section button {
+  background-color: #e5902f;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 15px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.todo-input-section button:hover {
+  background-color: #cc7d29;
+}
+
+/* Todo List */
+.todo-box ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.todo-box li {
+  margin: 10px 0;
+  background-color: #fdf4ec;
+  border-radius: 10px;
+  padding: 10px 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.todo-box li span {
+  font-size: 16px;
+  color: #333;
+}
+
+/* Delete Button */
+.todo-box li button {
+  background-color: #ff6b6b;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 6px 10px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.todo-box li button:hover {
+  background-color: #e05a5a;
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+  .todo-box {
+    width: 90%;
+    padding: 25px;
+  }
+
+  .todo-input-section {
+    flex-direction: column;
+  }
+
+  .todo-input-section button {
+    width: 100%;
+  }
+}
