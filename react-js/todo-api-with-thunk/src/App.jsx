@@ -1,33 +1,56 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux"
+import { createTodo, deleteTodo, getTodos, toggleTodo } from "./features/todoSlice";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const dispatch = useDispatch()
+  const { items: todos, loading, error } = useSelector((state) => state.todos);
+
+  console.log("-----", todos)
+  const [task, setTask] = useState("")
+
+  const handleAdd = () => {
+    console.log(task)
+    if (task.trim()) {
+      dispatch(createTodo(task));
+      setTask("")
+    }
+  }
+
+  useEffect(() => {
+    dispatch(getTodos());
+  }, [dispatch])
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <h1>Redux Thunk todo app</h1>
+      <input type="text" onChange={(e) => setTask(e.target.value)} value={task} placeholder="Enter text: " />
+      <button onClick={handleAdd}>Add</button>
+
+      {loading && <p>Loading...</p>}
+      {error && <p style={{ color: "red" }}>{error}</p>}
+
+      <ul>
+        {todos.map((todo) => {
+          return (
+            <li key={todo.id}>
+              <span
+                onClick={() => dispatch(toggleTodo(todo))}
+                style={{
+                  textDecoration: todo.completed ? "line-through" : "none",
+                  cursor: "pointer",
+                }}
+              >
+                {todo.text}
+              </span>
+              <button onClick={() => dispatch(deleteTodo(todo.id))}>Delete</button>
+            </li>
+          );
+        })}
+
+      </ul>
+
+
     </>
   )
 }

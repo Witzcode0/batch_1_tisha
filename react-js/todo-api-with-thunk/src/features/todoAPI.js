@@ -10,7 +10,9 @@ export const fetchTodos = async () => {
 
 // ADD NEW TODO
 export const addTodoAPI = async (newTodo) => {
+    console.log("---->1", newTodo);
     const res = await axios.post(API_URL, newTodo);
+    console.log("---->2", res.data);
     return res.data;
 }
 

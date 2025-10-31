@@ -7,8 +7,9 @@ export const getTodos =  createAsyncThunk("todos/getTodos", async () => {
 
 export const createTodo = createAsyncThunk("todos/createTodo", async (text) => {
     const newTodo = {
-        id:new Date.now(), text, completed: false
+        text, completed: false
     }
+    console.log(newTodo, "-------")
     return await addTodoAPI(newTodo);
 })
 
@@ -41,5 +42,17 @@ const todoSlice = createSlice({
             state.loading =  false;
             state.error = action.error.message;
         })
+        .addCase(createTodo.fulfilled, (state, action) => {
+            state.items.push(action.payload);
+        })
+        .addCase(toggleTodo.fulfilled, (state, action) => {
+            const index = state.items.findIndex((t) => t.id == action.payload.id);
+            state.items[index] = action.payload;
+        })
+        .addCase(deleteTodo.fulfilled, (state, action) => {
+            state.items = state.items.filter((t) => t.id !== action.payload);
+        })
     }
 })
+
+export default todoSlice.reducer;
