@@ -1,0 +1,46 @@
+// greeting
+{
+    hello
+}
+
+
+
+// get all students
+
+{
+    students {
+        id
+        name
+        age
+    }
+}
+
+// get specific student 
+{
+    student(id : 1) {
+        id
+        name
+        age
+    }
+}
+
+
+// create new student
+
+mutation {
+  createStudent(id: 6, name: "Karan", age: 32)
+}
+
+// Update specific student detail
+mutation {
+  updateStudent(id: 1, name: "Brijesh Gondaliya", age: 29){
+    id
+    name
+    age
+  }
+}
+
+// Delete specific student
+mutation {
+  deleteStudent(id: 1)
+}
