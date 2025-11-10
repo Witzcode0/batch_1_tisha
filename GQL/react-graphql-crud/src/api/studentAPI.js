@@ -1,6 +1,8 @@
 import axios from "axios";
 
 export const graphQuery = async (query) => {
+
+  console.log(query, ":------->")
   try {
     const res = await axios.post(
       "http://localhost:5000/graphql",
@@ -13,6 +15,8 @@ export const graphQuery = async (query) => {
     );
 
     console.log("Axios Response:", res);
+
+
 
     const json = res.data;
     console.log("GraphQL JSON Response:", json);
@@ -44,3 +48,21 @@ export const getStudents = async () => {
   const data = await graphQuery(query);
   return data.students;
 };
+
+export const createStudent = async (id, name, age) => {
+  const query = `
+    mutation {
+      createStudent(id: ${id}, name: "${name}", age: ${age})
+    }
+  `;
+  return await graphQuery(query);
+}
+
+export const deleteStudent = async (id) => {
+  const query = `
+    mutation {
+      deleteStudent(id: ${id})
+    }
+    `;
+  return await graphQuery(query)
+}
