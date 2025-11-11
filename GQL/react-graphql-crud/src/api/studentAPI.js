@@ -58,6 +58,19 @@ export const createStudent = async (id, name, age) => {
   return await graphQuery(query);
 }
 
+export const updateStudent = async (id, name, age) => {
+  const query = `
+    mutation {
+      updateStudent(id: ${id}, name: "${name}", age: ${age}){
+        id
+        name
+        age
+      }
+    }
+  `;
+  return await graphQuery(query);
+} 
+
 export const deleteStudent = async (id) => {
   const query = `
     mutation {

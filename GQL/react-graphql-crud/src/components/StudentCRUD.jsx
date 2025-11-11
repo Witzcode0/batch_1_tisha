@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { createStudent, deleteStudent, getStudents } from '../api/studentAPI'
+import { createStudent, deleteStudent, getStudents, updateStudent } from '../api/studentAPI'
 
 const initialForm = {
   id: "",
@@ -10,6 +10,7 @@ const initialForm = {
 function StudentCRUD() {
     const [students, setStudents] = useState([])
     const [form, setForm] = useState(initialForm)
+    const [isEdit, setIsEdit] = useState(false)
     const [error, setError] = useState(null)
 
     useEffect(() => {
@@ -45,14 +46,29 @@ function StudentCRUD() {
           return
         }
 
-        await createStudent(Number(form.id), String(form.name), Number(form.age));
+        if (isEdit){
+          await updateStudent(Number(form.id), String(form.name), Number(form.age));
+        }else{
+          await createStudent(Number(form.id), String(form.name), Number(form.age));
+        }
 
         setForm(initialForm);
+        setIsEdit(false)
         await loadStudents();
       }catch(err){
         setError(err.message);
       }
     }
+
+    const handleEdit = (student) => {
+      setForm({
+        id: student.id,
+        name: student.name,
+        age:student.age
+      });
+
+      setIsEdit(true)
+    } 
 
     const handleDelete = async (id) => {
       if(!window.confirm(`Are you sure you want to delete ID number: ${id} student? `)){
@@ -74,7 +90,7 @@ function StudentCRUD() {
       <div className="row g-4">
         {/* 🧾 Add Student Form */}
         <div className="col-lg-4">
-          <h5 className="mb-3 text-primary fw-bold">Add New Student</h5>
+          <h5 className="mb-3 text-primary fw-bold">{isEdit ? "Edit Student" : "Add New Student" }</h5>
           {
             error && (
               <div className='alert alert-danger' role='alert'>
@@ -96,7 +112,7 @@ function StudentCRUD() {
               <input type="number" className="form-control" name='age' onChange={handleChage} value={form.age} required />
             </div>
 
-            <button className="btn btn-primary w-100">Add Student</button>
+            <button className="btn btn-primary w-100">{isEdit ? "Edit Student" : "Add Student" }</button>
           </form>
         </div>
 
@@ -128,7 +144,7 @@ function StudentCRUD() {
                       <td>{s.name}</td>
                       <td className="text-center">{s.age}</td>
                       <td className="text-center">
-                        <button className="btn btn-sm btn-warning me-2">
+                        <button className="btn btn-sm btn-warning me-2" onClick={() => handleEdit(s)}>
                           ✏️ Edit
                         </button>
                         <button className="btn btn-sm btn-danger" onClick={() => handleDelete(s.id)}>🗑 Delete</button>
